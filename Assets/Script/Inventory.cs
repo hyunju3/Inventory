@@ -37,7 +37,8 @@ public class Inventory : MonoBehaviour
     }
     void Start()
     {
-        SlotCnt = 5;
+        // 아이템 슬롯 열어 놓은 칸
+        SlotCnt = 10;
     }
 
     public bool AddItem(Item _item)

@@ -10,6 +10,7 @@ public class FieldItems : MonoBehaviour
 
     public void SetItem(Item _item)
     {
+        item.itemId = _item.itemId;
         item.itemName = _item.itemName;
         item.itemImage = _item.itemImage;
         item.itmeType = _item.itmeType;

@@ -15,6 +15,7 @@ public enum ItemType
 public class Item
 {
     public ItemType itmeType;
+    public int itemId;
     public string itemName;
     public Sprite itemImage;
     public List<ItemEffect> efts;
