@@ -17,7 +17,6 @@ public class TrrItem : ScriptableObject
 
     [Header("Both")]
     public Sprite image;
-
 }
 
 public enum TrrItemType

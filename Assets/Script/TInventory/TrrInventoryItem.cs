@@ -9,35 +9,38 @@ public class TrrInventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     [Header("UI")]
     public Image image;
+    public Text countText;
 
     [HideInInspector] public TrrItem trrItem;
+    [HideInInspector] public int count = 1;
     [HideInInspector] public Transform parentAfterDrag;
 
-    private void Start()
-    {
-        InitialiseItem(trrItem);
-    }
-
-    public void InitialiseItem(TrrItem newItem)
-    {
+    public void InitialiseItem(TrrItem newItem) {
         trrItem = newItem;
         image.sprite = newItem.image;
+        count = count++;
+        RefreshCount();
     }
-    // Drag and drop
-    public void OnBeginDrag(PointerEventData eventData)
+
+    public void RefreshCount()
     {
+        countText.text = count.ToString();
+        bool textActive = count > 1;
+        countText.gameObject.SetActive(textActive);
+    }
+
+    // Drag and drop
+    public void OnBeginDrag(PointerEventData eventData) {
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
     }
 
-    public void OnDrag(PointerEventData eventData)
-    {
+    public void OnDrag(PointerEventData eventData) {
         transform.position = Input.mousePosition;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
+    public void OnEndDrag(PointerEventData eventData) {
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
     }
