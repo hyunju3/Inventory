@@ -83,13 +83,22 @@ public class TrrInventoryManager : MonoBehaviour
         trrInventoryItem.InitialiseItem(trrItem);
     }
 
-    public TrrItem GetSelectedItem()
+    public TrrItem GetSelectedItem(bool use = false)
     {
         TrrInventorySlot slot = trrInventorySlots[selectedSlot];
         TrrInventoryItem itemInSlot = slot.GetComponentInChildren<TrrInventoryItem>();
         if (itemInSlot != null)
         {
-            return itemInSlot.trrItem;
+            TrrItem trrItem = itemInSlot.trrItem;
+            if (use == true)
+            {
+                itemInSlot.count--;
+                if (itemInSlot.count <= 0)
+                    Destroy(itemInSlot.gameObject);
+                else
+                    itemInSlot.RefreshCount();
+            }
+            return trrItem;
         }
         return null;
     }

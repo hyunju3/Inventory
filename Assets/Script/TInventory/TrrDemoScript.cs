@@ -35,4 +35,19 @@ public class TrrDemoScript : MonoBehaviour
             Debug.Log("버릴 아이템이 존재하지 않음");
         }
     }
+    public void UseGetSelectedItem()
+    {
+        TrrItem receivedItem = trrInventoryManager.GetSelectedItem(true);
+        Debug.Log("ReceivedItem 수신성공");
+
+        if (receivedItem != null)
+        {
+            Debug.Log("아이템 사용: " + receivedItem);
+        }
+        else
+        {
+            Debug.Log("사용할 아이템이 존재하지 않음");
+        }
+    }
+
 }
